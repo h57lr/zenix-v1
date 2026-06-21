@@ -2,6 +2,7 @@
 
 import { ExternalLink, Mail, MapPin } from "lucide-react";
 import { siteConfig, contactInfo, navItems } from "@/lib/constants";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   const handleNavClick = (href: string) => {
@@ -16,9 +17,7 @@ export function Footer() {
       <div className="container-section py-16">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <span className="text-lg font-bold tracking-tight">
-              Zenix<span className="text-accent"> AI</span>
-            </span>
+            <BrandLogo imageClassName="h-10" />
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
               Intelligent growth systems for modern ecommerce brands.
             </p>

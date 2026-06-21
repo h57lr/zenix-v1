@@ -116,3 +116,19 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+.brand-logo-dark {
+  display: block;
+}
+
+.brand-logo-light {
+  display: none;
+}
+
+.light .brand-logo-dark {
+  display: none;
+}
+
+.light .brand-logo-light {
+  display: block;
+}

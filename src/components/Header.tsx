@@ -6,6 +6,7 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { navItems } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { BrandLogo } from "@/components/BrandLogo";
 
 type Theme = "light" | "dark";
 
@@ -70,9 +71,10 @@ export function Header() {
       <nav className="container-section flex h-16 items-center justify-between md:h-20">
         <a
           href="#"
-          className="text-lg font-bold tracking-tight"
+          className="inline-flex items-center"
+          aria-label="Zenix home"
         >
-          Zenix<span className="text-accent"> AI</span>
+          <BrandLogo imageClassName="h-8 sm:h-9" />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

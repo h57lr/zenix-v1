@@ -27,6 +27,11 @@ export const metadata: Metadata = {
       "We combine AI automation, performance marketing, tracking infrastructure, and advanced reporting to help businesses scale faster.",
     type: "website",
   },
+  icons: {
+    icon: [{ url: "/brand/favicon.webp", type: "image/webp", sizes: "512x512" }],
+    shortcut: [{ url: "/brand/favicon.webp", type: "image/webp", sizes: "512x512" }],
+    apple: [{ url: "/brand/zenix-mark.webp", type: "image/webp", sizes: "512x512" }],
+  },
 };
 
 export default function RootLayout({
