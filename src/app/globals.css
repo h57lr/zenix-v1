@@ -1,14 +1,37 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #111111;
-  --color-bg-tertiary: #181818;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a0a0a0;
-  --color-accent: #00e5ff;
-  --color-accent-hover: #33ebff;
+  --color-bg-primary: var(--theme-bg-primary);
+  --color-bg-secondary: var(--theme-bg-secondary);
+  --color-bg-tertiary: var(--theme-bg-tertiary);
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root,
+.dark {
+  color-scheme: dark;
+  --theme-bg-primary: #0a0a0a;
+  --theme-bg-secondary: #111111;
+  --theme-bg-tertiary: #181818;
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #a0a0a0;
+  --theme-accent: #00e5ff;
+  --theme-accent-hover: #33ebff;
+}
+
+.light {
+  color-scheme: light;
+  --theme-bg-primary: #f7fafc;
+  --theme-bg-secondary: #eef4f8;
+  --theme-bg-tertiary: #ffffff;
+  --theme-text-primary: #08111f;
+  --theme-text-secondary: #536172;
+  --theme-accent: #008fb3;
+  --theme-accent-hover: #00a6d1;
 }
 
 @layer base {
@@ -20,6 +43,13 @@
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  * {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
   }
 
   ::selection {
@@ -32,7 +62,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-bg-primary);
+    background: var(--theme-bg-primary);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -45,6 +75,26 @@
   }
 }
 
+.light .border-white\/5 {
+  border-color: rgb(8 17 31 / 0.08);
+}
+
+.light .border-white\/10 {
+  border-color: rgb(8 17 31 / 0.12);
+}
+
+.light .border-white\/20 {
+  border-color: rgb(8 17 31 / 0.2);
+}
+
+.light .bg-white\/5 {
+  background-color: rgb(8 17 31 / 0.04);
+}
+
+.light .hover\:bg-white\/5:hover {
+  background-color: rgb(8 17 31 / 0.05);
+}
+
 @utility container-section {
   max-width: 1200px;
   margin-left: auto;
@@ -54,14 +104,14 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+  background: linear-gradient(135deg, var(--theme-text-primary) 0%, var(--theme-text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 @utility text-gradient-accent {
-  background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);
+  background: linear-gradient(135deg, var(--theme-accent) 0%, #0077ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

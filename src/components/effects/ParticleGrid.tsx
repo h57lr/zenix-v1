@@ -131,7 +131,7 @@ export function ParticleGrid() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 h-full w-full"
+      className="pointer-events-none absolute inset-0 h-full w-full"
       style={{ maskImage: "linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)" }}
     />
   );

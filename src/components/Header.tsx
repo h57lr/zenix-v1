@@ -1,11 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { navItems } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+
+type Theme = "light" | "dark";
+
+const getThemeSnapshot = (): Theme => {
+  if (typeof document === "undefined") return "dark";
+  return document.documentElement.classList.contains("light") ? "light" : "dark";
+};
+
+const subscribeToTheme = (callback: () => void) => {
+  window.addEventListener("themechange", callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener("themechange", callback);
+    window.removeEventListener("storage", callback);
+  };
+};
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, () => "dark");
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    window.dispatchEvent(new Event("themechange"));
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className={`inline-flex items-center justify-center gap-2 rounded-full border border-accent/30 bg-bg-tertiary/90 px-3.5 py-2 text-sm font-semibold text-text-primary shadow-[0_0_24px_-16px_var(--theme-accent)] backdrop-blur-xl transition-all duration-300 hover:border-accent/70 hover:bg-accent/10 ${className}`}
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+    >
+      {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+      <span>{theme === "dark" ? "Light" : "Dark"}</span>
+    </button>
+  );
+}
 
 export function Header() {
   const { isScrolled } = useScrollPosition();
@@ -50,13 +90,16 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="relative z-50 text-text-primary md:hidden"
-          aria-label="Toggle menu"
-        >
-          {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className="relative z-50 text-text-primary md:hidden"
+            aria-label="Toggle menu"
+          >
+            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
