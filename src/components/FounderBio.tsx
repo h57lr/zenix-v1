@@ -43,10 +43,13 @@ export function FounderBio() {
           >
             <span>
               <span className="block text-xs font-semibold uppercase tracking-[0.3em] text-accent/80">
-                Direct Access
+                Direct access to my personal website
               </span>
               <span className="mt-2 block font-mono text-lg font-semibold text-text-primary">
                 {founderContent.accessIp}
+              </span>
+              <span className="mt-2 block text-xs leading-relaxed text-text-secondary/70">
+                {founderContent.accessNote}
               </span>
             </span>
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-bg-primary group-hover:scale-105">
