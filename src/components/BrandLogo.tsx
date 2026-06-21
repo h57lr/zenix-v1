@@ -6,7 +6,7 @@ interface BrandLogoProps {
 }
 
 export function BrandLogo({ className = "", imageClassName = "" }: BrandLogoProps) {
-  const imageClasses = `h-auto w-auto ${imageClassName}`;
+  const imageClasses = `h-auto object-contain ${imageClassName}`;
 
   return (
     <span className={`inline-flex items-center ${className}`} aria-hidden="true">

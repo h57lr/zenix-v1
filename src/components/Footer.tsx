@@ -17,7 +17,7 @@ export function Footer() {
       <div className="container-section py-16">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <BrandLogo imageClassName="h-10" />
+            <BrandLogo imageClassName="h-7 w-[170px]" />
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
               Intelligent growth systems for modern ecommerce brands.
             </p>

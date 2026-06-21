@@ -71,10 +71,10 @@ export function Header() {
       <nav className="container-section flex h-16 items-center justify-between md:h-20">
         <a
           href="#"
-          className="inline-flex items-center"
+          className="inline-flex h-10 items-center overflow-hidden"
           aria-label="Zenix home"
         >
-          <BrandLogo imageClassName="h-8 sm:h-9" />
+          <BrandLogo imageClassName="h-5 w-[120px] sm:h-6 sm:w-[145px]" />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
