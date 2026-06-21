@@ -15,8 +15,8 @@ export const navItems = [
 
 export const heroContent = {
   badge: "AI-POWERED GROWTH",
-  headline: "Zenix AI builds intelligent growth systems for modern ecommerce brands.",
-  body: "We combine AI automation, performance marketing, tracking infrastructure, and advanced reporting to help businesses scale faster, measure better, and make smarter decisions.",
+  headline: "AI growth systems for ecommerce brands ready to scale.",
+  body: "Zenix AI connects performance marketing, clean tracking, automation, and executive reporting so every growth decision is faster and easier to measure.",
   cta: "Build Your Growth System",
 };
 

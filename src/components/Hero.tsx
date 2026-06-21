@@ -141,7 +141,7 @@ function HeroDashboard() {
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-      className="relative mx-auto mt-12 w-full max-w-xl lg:mt-0"
+      className="relative mx-auto mt-10 w-full max-w-md sm:max-w-xl lg:mt-0"
     >
       <div className="absolute -top-12 -right-8 h-40 w-40 rounded-full bg-accent/20 blur-3xl" />
       <div className="absolute -bottom-10 -left-8 h-52 w-52 rounded-full bg-blue-500/10 blur-3xl" />
@@ -149,33 +149,33 @@ function HeroDashboard() {
       <motion.div
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="relative overflow-hidden rounded-3xl border border-white/10 bg-bg-secondary/85 p-3 shadow-[0_30px_100px_-40px_rgba(0,229,255,0.45)] backdrop-blur-xl sm:p-4 md:p-5"
+        className="relative overflow-hidden rounded-2xl border border-white/10 bg-bg-secondary/85 p-3 shadow-[0_30px_100px_-40px_rgba(0,229,255,0.45)] backdrop-blur-xl sm:rounded-3xl sm:p-4 md:p-5"
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
 
-        <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-white/5 pb-3 sm:flex-row sm:items-center sm:justify-between sm:pb-4">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.24em] text-accent sm:tracking-[0.3em]">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-accent sm:text-xs sm:tracking-[0.3em]">
               Live Performance
             </p>
-            <h2 className="mt-2 text-base font-semibold text-text-primary sm:text-lg md:text-xl">
+            <h2 className="mt-1.5 text-base font-semibold text-text-primary sm:mt-2 sm:text-lg md:text-xl">
               {activeDashboard.title}
             </h2>
             <p className="mt-1 text-xs text-text-secondary">{activeDashboard.subtitle}</p>
           </div>
-          <div className="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-text-secondary">
+          <div className="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] text-text-secondary sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_var(--theme-accent)]" />
             Click any metric
           </div>
         </div>
 
-        <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 sm:grid sm:grid-cols-4 sm:overflow-visible">
+        <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1 sm:mt-4 sm:grid sm:grid-cols-4 sm:overflow-visible">
           {(Object.keys(dashboardModes) as DashboardMode[]).map((mode) => (
             <button
               key={mode}
               type="button"
               onClick={() => selectMode(mode)}
-              className={`min-w-max rounded-xl border px-3 py-2 text-xs font-semibold transition-all duration-300 sm:min-w-0 ${
+              className={`min-w-max rounded-xl border px-3 py-2 text-[11px] font-semibold transition-all duration-300 sm:min-w-0 sm:text-xs ${
                 activeMode === mode
                   ? "border-accent/60 bg-accent/15 text-accent shadow-[0_0_24px_-12px_var(--theme-accent)]"
                   : "border-white/5 bg-bg-tertiary/60 text-text-secondary hover:border-accent/30 hover:text-text-primary"
@@ -191,11 +191,11 @@ function HeroDashboard() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
-          className="mt-4 rounded-2xl border border-accent/30 bg-accent/10 p-4"
+          className="mt-3 rounded-2xl border border-accent/30 bg-accent/10 p-3 sm:mt-4 sm:p-4"
         >
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.22em]">
                 Selected Insight
               </p>
               <p className="mt-2 text-sm font-semibold text-text-primary">
@@ -205,14 +205,14 @@ function HeroDashboard() {
                 {selectedItem.insight}
               </p>
             </div>
-            <div className="shrink-0 rounded-xl bg-bg-tertiary px-3 py-2 text-right">
+            <div className="w-fit shrink-0 rounded-xl bg-bg-tertiary px-3 py-2 text-left sm:text-right">
               <div className="text-lg font-bold text-accent">{selectedItem.delta ?? selectedItem.value ?? selectedItem.status}</div>
               <div className="text-[10px] uppercase tracking-widest text-text-secondary">Live</div>
             </div>
           </div>
         </motion.div>
 
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="mt-3 grid grid-cols-3 gap-2 sm:mt-4 sm:gap-3">
           {activeDashboard.kpis.map((item, index) => {
             const Icon = item.icon;
             const isActive = selectedItem.key === item.key;
@@ -226,39 +226,39 @@ function HeroDashboard() {
                 whileHover={{ y: -4, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setSelectedKey(item.key)}
-                className={`rounded-2xl border bg-bg-tertiary/80 p-3 text-left ${
+                className={`rounded-2xl border bg-bg-tertiary/80 p-2.5 text-left sm:p-3 ${
                   isActive ? "border-accent/60 shadow-[0_0_30px_-18px_var(--theme-accent)]" : "border-white/5 hover:border-accent/30"
                 }`}
               >
-                <div className="mb-3 flex items-center justify-between text-text-secondary">
+                <div className="mb-2 flex items-center justify-between text-text-secondary sm:mb-3">
                   <Icon size={16} className="text-accent" />
-                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-medium text-accent">
+                  <span className="rounded-full bg-accent/10 px-1.5 py-0.5 text-[9px] font-medium text-accent sm:px-2 sm:text-[10px]">
                     {item.delta}
                   </span>
                 </div>
-                <div className="text-xl font-bold text-text-primary md:text-2xl">{item.value}</div>
-                <div className="mt-1 text-[11px] text-text-secondary md:text-xs">{item.label}</div>
+                <div className="text-lg font-bold text-text-primary sm:text-xl md:text-2xl">{item.value}</div>
+                <div className="mt-1 text-[10px] text-text-secondary sm:text-[11px] md:text-xs">{item.label}</div>
               </motion.button>
             );
           })}
         </div>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-[1.25fr_0.95fr]">
+        <div className="mt-3 grid gap-3 sm:mt-4 sm:gap-4 md:grid-cols-[1.25fr_0.95fr]">
           <button
             type="button"
             onClick={() => setSelectedKey(activeDashboard.kpis[0].key)}
-            className="rounded-2xl border border-white/5 bg-bg-tertiary/70 p-4 text-left hover:border-accent/30"
+            className="rounded-2xl border border-white/5 bg-bg-tertiary/70 p-3 text-left hover:border-accent/30 sm:p-4"
           >
-            <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4 sm:gap-4">
               <div>
                 <p className="text-sm font-medium text-text-primary">Live Performance Curve</p>
-                <p className="text-xs text-text-secondary">Updates with every dashboard view</p>
+                <p className="text-xs text-text-secondary">Updates in real time</p>
               </div>
-              <span className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
+              <span className="rounded-full bg-accent/10 px-2 py-1 text-[11px] font-medium text-accent sm:px-2.5 sm:text-xs">
                 {selectedItem.delta ?? selectedItem.status ?? selectedItem.value}
               </span>
             </div>
-            <svg viewBox="0 0 320 150" className="h-32 w-full overflow-visible sm:h-36">
+            <svg viewBox="0 0 320 150" className="h-24 w-full overflow-visible sm:h-36">
               <defs>
                 <linearGradient id="hero-chart-fill" x1="0" x2="0" y1="0" y2="1">
                   <stop offset="0%" stopColor="var(--theme-accent)" stopOpacity="0.35" />
@@ -290,9 +290,9 @@ function HeroDashboard() {
             </svg>
           </button>
 
-          <div className="rounded-2xl border border-white/5 bg-bg-tertiary/70 p-4">
+          <div className="rounded-2xl border border-white/5 bg-bg-tertiary/70 p-3 sm:p-4">
             <p className="text-sm font-medium text-text-primary">Clickable Breakdown</p>
-            <div className="mt-5 space-y-4">
+            <div className="mt-3 space-y-2.5 sm:mt-5 sm:space-y-4">
               {activeDashboard.bars.map((channel, index) => {
                 const isActive = selectedItem.key === channel.key;
                 return (
@@ -324,7 +324,7 @@ function HeroDashboard() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="mt-4 hidden gap-3 sm:grid sm:grid-cols-3">
           {activeDashboard.statuses.map((item, index) => {
             const Icon = item.icon;
             const isActive = selectedItem.key === item.key;
@@ -368,42 +368,42 @@ export function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden">
       <ParticleGrid />
 
-      <div className="container-section relative z-10 w-full pt-24 pb-20 md:pt-32 md:pb-32">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
+      <div className="container-section relative z-10 w-full pt-24 pb-16 md:pt-32 md:pb-32">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="max-w-3xl text-center lg:text-left"
           >
-            <Badge className="mb-6">{heroContent.badge}</Badge>
+            <Badge className="mb-5 sm:mb-6">{heroContent.badge}</Badge>
 
-            <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               {heroContent.headline}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg md:mt-6 md:text-xl lg:mx-0">
               {heroContent.body}
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button variant="primary" className="px-8 py-3.5 text-base" href="#contact">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:mt-10 lg:justify-start">
+              <Button variant="primary" className="w-full px-8 py-3.5 text-base sm:w-auto" href="#contact">
                 {heroContent.cta}
                 <ArrowRight size={18} />
               </Button>
-              <Button variant="secondary" className="px-8 py-3.5 text-base" href="#services">
+              <Button variant="secondary" className="w-full px-8 py-3.5 text-base sm:w-auto" href="#services">
                 View Services
               </Button>
             </div>
 
-            <div className="mt-10 grid max-w-lg grid-cols-3 gap-3 text-center sm:text-left">
+            <div className="mx-auto mt-8 grid max-w-lg grid-cols-3 gap-2 text-center sm:mt-10 sm:gap-3 lg:mx-0 lg:text-left">
               {[
                 ["Tracking", "Clean events"],
                 ["Automation", "Always on"],
                 ["Reporting", "One source"],
               ].map(([label, value]) => (
-                <div key={label} className="rounded-xl border border-white/5 bg-white/5 p-3 backdrop-blur-sm">
-                  <div className="text-sm font-semibold text-text-primary">{label}</div>
+                <div key={label} className="rounded-xl border border-white/5 bg-white/5 p-2.5 backdrop-blur-sm sm:p-3">
+                  <div className="text-xs font-semibold text-text-primary sm:text-sm">{label}</div>
                   <div className="mt-1 text-xs text-text-secondary">{value}</div>
                 </div>
               ))}
