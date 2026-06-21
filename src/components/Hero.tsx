@@ -141,10 +141,10 @@ function HeroDashboard() {
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-      className="relative mx-auto mt-10 w-full max-w-md sm:max-w-xl lg:mt-0"
+      className="relative mx-auto mt-10 w-full max-w-[calc(100vw-2rem)] sm:max-w-xl lg:mt-0"
     >
-      <div className="absolute -top-12 -right-8 h-40 w-40 rounded-full bg-accent/20 blur-3xl" />
-      <div className="absolute -bottom-10 -left-8 h-52 w-52 rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="absolute -top-10 right-0 h-32 w-32 rounded-full bg-accent/20 blur-3xl sm:-right-8 sm:h-40 sm:w-40" />
+      <div className="absolute -bottom-8 left-0 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl sm:-left-8 sm:h-52 sm:w-52" />
 
       <motion.div
         animate={{ y: [0, -6, 0] }}
@@ -153,8 +153,8 @@ function HeroDashboard() {
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
 
-        <div className="flex flex-col gap-3 border-b border-white/5 pb-3 sm:flex-row sm:items-center sm:justify-between sm:pb-4">
-          <div>
+        <div className="flex flex-col items-center gap-3 border-b border-white/5 pb-3 text-center sm:flex-row sm:items-center sm:justify-between sm:pb-4 sm:text-left">
+          <div className="w-full sm:w-auto">
             <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-accent sm:text-xs sm:tracking-[0.3em]">
               Live Performance
             </p>
@@ -169,13 +169,13 @@ function HeroDashboard() {
           </div>
         </div>
 
-        <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1 sm:mt-4 sm:grid sm:grid-cols-4 sm:overflow-visible">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:grid-cols-4">
           {(Object.keys(dashboardModes) as DashboardMode[]).map((mode) => (
             <button
               key={mode}
               type="button"
               onClick={() => selectMode(mode)}
-              className={`min-w-max rounded-xl border px-3 py-2 text-[11px] font-semibold transition-all duration-300 sm:min-w-0 sm:text-xs ${
+              className={`rounded-xl border px-2.5 py-2 text-[11px] font-semibold transition-all duration-300 sm:px-3 sm:text-xs ${
                 activeMode === mode
                   ? "border-accent/60 bg-accent/15 text-accent shadow-[0_0_24px_-12px_var(--theme-accent)]"
                   : "border-white/5 bg-bg-tertiary/60 text-text-secondary hover:border-accent/30 hover:text-text-primary"
@@ -193,7 +193,7 @@ function HeroDashboard() {
           transition={{ duration: 0.25 }}
           className="mt-3 rounded-2xl border border-accent/30 bg-accent/10 p-3 sm:mt-4 sm:p-4"
         >
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:text-left">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.22em]">
                 Selected Insight
@@ -205,7 +205,7 @@ function HeroDashboard() {
                 {selectedItem.insight}
               </p>
             </div>
-            <div className="w-fit shrink-0 rounded-xl bg-bg-tertiary px-3 py-2 text-left sm:text-right">
+            <div className="w-fit shrink-0 rounded-xl bg-bg-tertiary px-3 py-2 text-center sm:text-right">
               <div className="text-lg font-bold text-accent">{selectedItem.delta ?? selectedItem.value ?? selectedItem.status}</div>
               <div className="text-[10px] uppercase tracking-widest text-text-secondary">Live</div>
             </div>
@@ -226,17 +226,17 @@ function HeroDashboard() {
                 whileHover={{ y: -4, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setSelectedKey(item.key)}
-                className={`rounded-2xl border bg-bg-tertiary/80 p-2.5 text-left sm:p-3 ${
+                className={`rounded-2xl border bg-bg-tertiary/80 p-2 text-center sm:p-3 sm:text-left ${
                   isActive ? "border-accent/60 shadow-[0_0_30px_-18px_var(--theme-accent)]" : "border-white/5 hover:border-accent/30"
                 }`}
               >
-                <div className="mb-2 flex items-center justify-between text-text-secondary sm:mb-3">
-                  <Icon size={16} className="text-accent" />
+                <div className="mb-2 flex items-center justify-center gap-1.5 text-text-secondary sm:mb-3 sm:justify-between sm:gap-0">
+                  <Icon size={15} className="text-accent sm:size-4" />
                   <span className="rounded-full bg-accent/10 px-1.5 py-0.5 text-[9px] font-medium text-accent sm:px-2 sm:text-[10px]">
                     {item.delta}
                   </span>
                 </div>
-                <div className="text-lg font-bold text-text-primary sm:text-xl md:text-2xl">{item.value}</div>
+                <div className="text-base font-bold text-text-primary sm:text-xl md:text-2xl">{item.value}</div>
                 <div className="mt-1 text-[10px] text-text-secondary sm:text-[11px] md:text-xs">{item.label}</div>
               </motion.button>
             );
@@ -249,7 +249,7 @@ function HeroDashboard() {
             onClick={() => setSelectedKey(activeDashboard.kpis[0].key)}
             className="rounded-2xl border border-white/5 bg-bg-tertiary/70 p-3 text-left hover:border-accent/30 sm:p-4"
           >
-            <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4 sm:gap-4">
+            <div className="mb-3 flex flex-col items-center justify-center gap-2 text-center sm:mb-4 sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
               <div>
                 <p className="text-sm font-medium text-text-primary">Live Performance Curve</p>
                 <p className="text-xs text-text-secondary">Updates in real time</p>
@@ -368,30 +368,30 @@ export function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden">
       <ParticleGrid />
 
-      <div className="container-section relative z-10 w-full pt-24 pb-16 md:pt-32 md:pb-32">
+      <div className="container-section relative z-10 w-full pt-24 pb-16 max-sm:px-4 md:pt-32 md:pb-32">
         <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl text-center lg:text-left"
+            className="mx-auto w-full max-w-3xl text-center lg:mx-0 lg:text-left"
           >
             <Badge className="mb-5 sm:mb-6">{heroContent.badge}</Badge>
 
-            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="mx-auto max-w-[11ch] text-[2.55rem] font-bold leading-[1.04] tracking-tight sm:max-w-2xl sm:text-5xl md:text-6xl lg:mx-0 lg:text-7xl">
               {heroContent.headline}
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg md:mt-6 md:text-xl lg:mx-0">
+            <p className="mx-auto mt-5 max-w-[34rem] text-[15px] leading-relaxed text-text-secondary sm:text-lg md:mt-6 md:max-w-2xl md:text-xl lg:mx-0">
               {heroContent.body}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:mt-10 lg:justify-start">
-              <Button variant="primary" className="w-full px-8 py-3.5 text-base sm:w-auto" href="#contact">
+            <div className="mx-auto mt-8 flex w-full max-w-sm flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:items-center sm:justify-center md:mt-10 lg:mx-0 lg:justify-start">
+              <Button variant="primary" className="w-full px-6 py-3.5 text-sm sm:w-auto sm:px-8 sm:text-base" href="#contact">
                 {heroContent.cta}
                 <ArrowRight size={18} />
               </Button>
-              <Button variant="secondary" className="w-full px-8 py-3.5 text-base sm:w-auto" href="#services">
+              <Button variant="secondary" className="w-full px-6 py-3.5 text-sm sm:w-auto sm:px-8 sm:text-base" href="#services">
                 View Services
               </Button>
             </div>
