@@ -22,11 +22,12 @@ export const heroContent = {
 
 export const aboutContent = {
   headline: "About Zenix AI.",
-  body: "Zenix AI is a performance marketing and AI automation firm that builds complete growth systems for ecommerce and digital businesses. Founded by Zaid Al-Momani, we combine deep technical expertise with creative strategy to deliver measurable results. We don't just run campaigns — we build the infrastructure, measurement frameworks, and automated workflows that make growth repeatable and scalable.",
+  body: "Zenix AI is a performance marketing and AI automation firm that builds complete growth systems for ecommerce and digital businesses. Founded by Enad Shneikat, we combine deep technical expertise with creative strategy to deliver measurable results. We don't just run campaigns — we build the infrastructure, measurement frameworks, and automated workflows that make growth repeatable and scalable.",
   stats: [
     { value: "$10M+", label: "Managed Ad Spend" },
-    { value: "6+", label: "Years of Experience" },
+    { value: "9+", label: "Years of Experience" },
     { value: "50+", label: "Brands Accelerated" },
+    { value: "180%+", label: "ROI" },
   ],
 };
 
@@ -113,9 +114,9 @@ export const servicesList = [
 ];
 
 export const founderContent = {
-  name: "Zaid Al-Momani",
+  name: "Enad Shneikat",
   role: "Founder, Zenix AI",
-  bio: "Zaid Al-Momani is a performance marketing and AI automation specialist with over 6 years of experience helping ecommerce and digital businesses scale. He has managed over $10M in advertising spend across the MENA region and beyond, building growth systems that combine technical precision with strategic creativity. Zaid founded Zenix AI to provide brands with a complete growth partner — one that doesn't just run ads, but builds the intelligent infrastructure needed for sustainable, data-driven success.",
+  bio: "Enad Shneikat is a performance marketing and AI automation specialist with over 9 years of experience helping ecommerce and digital businesses scale. He has managed over $10M in advertising spend across the MENA region and beyond, building growth systems that combine technical precision with strategic creativity. Enad founded Zenix AI to provide brands with a complete growth partner — one that doesn't just run ads, but builds the intelligent infrastructure needed for sustainable, data-driven success.",
   statement:
     "Zenix AI is built for brands that refuse to settle for surface-level marketing. We combine engineering rigor with creative strategy to build growth systems that are as intelligent as they are effective.",
 };
