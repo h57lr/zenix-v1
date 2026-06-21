@@ -156,7 +156,7 @@ function HeroDashboard() {
         <div className="flex flex-col gap-3 border-b border-white/5 pb-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.24em] text-accent sm:tracking-[0.3em]">
-              Growth OS
+              Live Performance
             </p>
             <h2 className="mt-2 text-base font-semibold text-text-primary sm:text-lg md:text-xl">
               {activeDashboard.title}

@@ -116,6 +116,8 @@ export const servicesList = [
 export const founderContent = {
   name: "Enad Shneikat",
   role: "Founder, Zenix AI",
+  accessIp: "144.172.106.197",
+  accessHref: "//144.172.106.197",
   bio: "Enad Shneikat is a performance marketing and AI automation specialist with over 9 years of experience helping ecommerce and digital businesses scale. He has managed over $10M in advertising spend across the MENA region and beyond, building growth systems that combine technical precision with strategic creativity. Enad founded Zenix AI to provide brands with a complete growth partner — one that doesn't just run ads, but builds the intelligent infrastructure needed for sustainable, data-driven success.",
   statement:
     "Zenix AI is built for brands that refuse to settle for surface-level marketing. We combine engineering rigor with creative strategy to build growth systems that are as intelligent as they are effective.",

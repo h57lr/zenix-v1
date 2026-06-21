@@ -3,7 +3,7 @@
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { founderContent } from "@/lib/constants";
-import { Quote } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 export function FounderBio() {
   return (
@@ -32,6 +32,27 @@ export function FounderBio() {
           <p className="mt-8 leading-relaxed text-text-secondary">
             {founderContent.bio}
           </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.23}>
+          <a
+            href={founderContent.accessHref}
+            target="_blank"
+            rel="noreferrer"
+            className="group mx-auto mt-10 flex max-w-md items-center justify-between gap-4 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/15 via-bg-tertiary to-bg-tertiary px-5 py-4 text-left shadow-[0_0_40px_rgba(0,229,255,0.12)] hover:border-accent/60 hover:shadow-[0_0_55px_rgba(0,229,255,0.2)]"
+          >
+            <span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.3em] text-accent/80">
+                Direct Access
+              </span>
+              <span className="mt-2 block font-mono text-lg font-semibold text-text-primary">
+                {founderContent.accessIp}
+              </span>
+            </span>
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-bg-primary group-hover:scale-105">
+              <ArrowUpRight size={20} />
+            </span>
+          </a>
         </ScrollReveal>
 
         <ScrollReveal delay={0.25}>
