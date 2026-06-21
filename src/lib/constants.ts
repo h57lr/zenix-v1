@@ -124,9 +124,9 @@ export const founderContent = {
 };
 
 export const contactInfo = {
-  email: "hello@zenix-ai.com",
+  email: "es@zenixai.dev",
   location: "Amman, Jordan",
   socials: {
-    linkedin: "https://linkedin.com/company/zenixai",
+    linkedin: "https://linkedin.com/company/zenix-ai-dev",
   },
 };
